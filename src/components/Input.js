@@ -16,7 +16,6 @@ export default styled.input`
     border-color: ${({ theme }) => theme.colors.primary.main}
   }
 
-
   ${({ theme, error }) =>
     error &&
     css`
