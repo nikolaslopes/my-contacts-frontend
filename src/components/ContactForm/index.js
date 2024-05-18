@@ -8,7 +8,7 @@ import FormGroup from '../../components/FormGroup';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 
-import { ButtonContainer, Form } from './styles';
+import { Form, ButtonContainer } from './styles';
 
 export default function ContactForm({ buttonLabel }) {
   const [name, setName] = useState('');
