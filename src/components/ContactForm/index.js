@@ -62,7 +62,7 @@ export default function ContactForm({ buttonLabel }) {
     <Form onSubmit={handleSubmit} noValidate>
       <FormGroup error={getErrorMessagesByFieldName('name')}>
         <Input
-          placeholder='Nome'
+          placeholder='Nome *'
           value={name}
           onChange={handleNameChange}
           error={getErrorMessagesByFieldName('name')}
