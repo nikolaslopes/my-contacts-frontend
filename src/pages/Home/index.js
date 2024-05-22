@@ -26,7 +26,7 @@ export default function Home() {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`http://localhost:3001/contactss?orderBy=${orderBy}`)
+    fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`)
       .then(async (response) => {
         await delay(500);
 
