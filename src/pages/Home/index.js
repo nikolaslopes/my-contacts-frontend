@@ -13,12 +13,14 @@ import {
   ListHeader,
   Card,
   ErrorContainer,
+  SearchNotFoundContainer,
 } from './styles';
 
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 import sad from '../../assets/images/sad.svg';
+import magnfierQuestion from '../../assets/images/magnifier-question.svg';
 
 export default function Home() {
   const [contacts, setContacts] = useState([]);
@@ -32,6 +34,9 @@ export default function Home() {
       contact.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   }, [contacts, searchTerm]);
+
+  console.log('contacts - ', contacts);
+  console.log('filtered contacts - ', filteredContacts.length);
 
   const loadContacts = useCallback(async () => {
     try {
@@ -107,6 +112,16 @@ export default function Home() {
                 <img src={arrow} alt='Arrow' />
               </button>
             </ListHeader>
+          )}
+
+          {contacts.length > 0 && filteredContacts.length < 1 && (
+            <SearchNotFoundContainer>
+              <img src={magnfierQuestion} alt='Magnifier question' />
+              <span>
+                Nenhum resultado foi encontrado para{' '}
+                <strong>{searchTerm}</strong>.
+              </span>
+            </SearchNotFoundContainer>
           )}
 
           {filteredContacts.map((contact) => (
