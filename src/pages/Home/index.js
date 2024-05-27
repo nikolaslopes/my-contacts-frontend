@@ -37,9 +37,6 @@ export default function Home() {
     );
   }, [contacts, searchTerm]);
 
-  console.log('contacts - ', contacts);
-  console.log('filtered contacts - ', filteredContacts.length);
-
   const loadContacts = useCallback(async () => {
     try {
       setIsLoading(true);
