@@ -20,7 +20,7 @@ import {
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
-import sad from '../../assets/images/sad.svg';
+import sadFace from '../../assets/images/sad-face.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
 import magnfierQuestion from '../../assets/images/magnifier-question.svg';
 
@@ -106,7 +106,7 @@ export default function Home() {
 
       {hasError && (
         <ErrorContainer>
-          <img src={sad} alt='Sad' />
+          <img src={sadFace} alt='Sad Face' />
           <div className='error-details'>
             <strong>Ocorreu um erro ao obter os seus contatos!</strong>
             <Button type='button' onClick={handleTryAgain}>
