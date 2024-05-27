@@ -1,9 +1,10 @@
+import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
 import isEmailValid from '../../utils/isEmailValid';
 import formatPhone from '../../utils/formatPhone';
 import useErrors from '../../hooks/useErrors';
+import CategoriesService from '../../services/CategoriesService';
 
 import Button from '../../components/Button';
 import FormGroup from '../../components/FormGroup';
@@ -16,12 +17,23 @@ export default function ContactForm({ buttonLabel }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [category, setCategory] = useState('');
+  const [categoryId, setCategoryId] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const { setError, removeError, getErrorMessagesByFieldName, errors } =
     useErrors();
 
   const isFormValid = name && errors.length === 0;
+
+  const loadCategories = useCallback(async () => {
+    const categoriesList = await CategoriesService.listCategories();
+
+    setCategories(categoriesList);
+  }, []);
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -54,7 +66,7 @@ export default function ContactForm({ buttonLabel }) {
       name,
       email,
       phone,
-      category,
+      categoryId,
     });
   }
 
@@ -87,12 +99,15 @@ export default function ContactForm({ buttonLabel }) {
       </FormGroup>
       <FormGroup>
         <Select
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
+          value={categoryId}
+          onChange={(event) => setCategoryId(event.target.value)}
         >
-          <option value=''>Categoria</option>
-          <option value='instagram'>Instagram</option>
-          <option value='discord'>Discord</option>
+          <option value=''> Sem categoria</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
         </Select>
       </FormGroup>
 
