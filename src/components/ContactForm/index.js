@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import isEmailValid from '../../utils/isEmailValid';
@@ -25,15 +25,17 @@ export default function ContactForm({ buttonLabel }) {
 
   const isFormValid = name && errors.length === 0;
 
-  const loadCategories = useCallback(async () => {
-    const categoriesList = await CategoriesService.listCategories();
-
-    setCategories(categoriesList);
-  }, []);
-
   useEffect(() => {
+    async function loadCategories() {
+      try {
+        const categoriesList = await CategoriesService.listCategories();
+
+        setCategories(categoriesList);
+      } catch {}
+    }
+
     loadCategories();
-  }, [loadCategories]);
+  }, []);
 
   function handleNameChange(event) {
     setName(event.target.value);
