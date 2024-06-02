@@ -65,6 +65,10 @@ export default function ContactForm({ buttonLabel, onSubmit }) {
     setPhone(formatPhone(event.target.value));
   }
 
+  function handleCategoryIdChange(event) {
+    setCategoryId(event.target.value);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -106,7 +110,7 @@ export default function ContactForm({ buttonLabel, onSubmit }) {
       <FormGroup isLoading={isLoadingCategories}>
         <Select
           value={categoryId}
-          onChange={(event) => setCategoryId(event.target.value)}
+          onChange={handleCategoryIdChange}
           disabled={isLoadingCategories}
         >
           <option value=''> Sem categoria</option>
