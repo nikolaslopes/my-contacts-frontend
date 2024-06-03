@@ -23,8 +23,8 @@ export const Container = styled.div`
 
   ${({ variant }) => containerVariants[variant] || containerVariants.default};
 
-  strong {
-    margin-left: 8px;
+  img {
+    margin-right: 8px;
   }
 
   & + & {
