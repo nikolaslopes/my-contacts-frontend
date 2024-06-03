@@ -5,7 +5,6 @@ import Spinner from '../Spinner';
 import { Container } from './styles';
 
 export default function FormGroup({ children, error = null, isLoading }) {
-  console.log(isLoading);
   return (
     <Container>
       <div className='form-item'>
