@@ -5,11 +5,11 @@ import { Container } from './styles';
 import xCircleIcon from '../../../assets/images/icons/x-circle.svg';
 import checkCircleIcon from '../../../assets/images/icons/check-circle.svg';
 
-export default function ToastMessage({ text, type = 'default' }) {
+export default function ToastMessage({ text, variant = 'default' }) {
   return (
-    <Container>
-      {type === 'danger' && <img src={xCircleIcon} alt='X' />}
-      {type === 'success' && <img src={checkCircleIcon} alt='Check' />}
+    <Container variant={variant}>
+      {variant === 'danger' && <img src={xCircleIcon} alt='X' />}
+      {variant === 'success' && <img src={checkCircleIcon} alt='Check' />}
       <strong>{text}</strong>
     </Container>
   );
@@ -17,5 +17,5 @@ export default function ToastMessage({ text, type = 'default' }) {
 
 ToastMessage.propTypes = {
   text: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['default', 'success', 'danger']),
+  variant: PropTypes.oneOf(['default', 'success', 'danger']),
 };

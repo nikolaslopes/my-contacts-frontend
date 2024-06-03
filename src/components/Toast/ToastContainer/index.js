@@ -5,8 +5,8 @@ export default function ToastContainer() {
   return (
     <Container>
       <ToastMessage text='Default toast' />
-      <ToastMessage text='Error toast' type='danger' />
-      <ToastMessage text='Success toast' type='success' />
+      <ToastMessage text='Error toast' variant='danger' />
+      <ToastMessage text='Success toast' variant='success' />
     </Container>
   );
 }
