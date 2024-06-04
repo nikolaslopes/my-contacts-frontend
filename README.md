@@ -1,4 +1,4 @@
-<p align="center"><img align="center" width="280" src="./.github/text-logo.svg"/></p>
+<h1 align="center" fontSize="280">MyContacts</h1>
 
 <h3 align="center">Application to store, show, edit and delete contacts!</h3>
 <hr>
