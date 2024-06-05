@@ -13,7 +13,12 @@ export default function ToastMessage({ message, onRemoveMessage }) {
   }
 
   return (
-    <Container variant={type} onClick={handleRemoveToast}>
+    <Container
+      variant={type}
+      onClick={handleRemoveToast}
+      tabIndex={0}
+      role='button'
+    >
       {type === 'danger' && <img src={xCircleIcon} alt='X' />}
       {type === 'success' && <img src={checkCircleIcon} alt='Check' />}
       <strong>{text}</strong>
