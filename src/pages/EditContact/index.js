@@ -49,6 +49,7 @@ export default function EditContact() {
 
       await ContactsService.updateContact(id, contact);
 
+      setContactName(contact.name);
       toast({
         type: 'success',
         text: 'Contato editado com sucesso!',
