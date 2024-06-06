@@ -13,16 +13,19 @@ export default function EditContact() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [contactName, setContactName] = useState('');
+
   const contactFormRef = useRef(null);
 
   useEffect(() => {
     async function loadContacts() {
       try {
-        const contact = await ContactsService.getContactById(id);
+        const contactData = await ContactsService.getContactById(id);
 
-        contactFormRef.current.setFieldsValues(contact);
+        contactFormRef.current.setFieldsValues(contactData);
 
         setIsLoading(false);
+        setContactName(contactData.name);
       } catch {
         navigate('/', { replace: true });
         toast({
@@ -35,12 +38,16 @@ export default function EditContact() {
     loadContacts();
   }, [id, navigate]);
 
-  function handleSubmit() {}
+  function handleSubmit(formData) {
+    console.log(formData);
+  }
 
   return (
     <>
       <Loader isLoading={isLoading} />
-      <PageHeader title='Editar Nikolas Lopes' />
+      <PageHeader
+        title={isLoading ? 'Carregando...' : `Editar ${contactName}`}
+      />
 
       <ContactForm
         ref={contactFormRef}
