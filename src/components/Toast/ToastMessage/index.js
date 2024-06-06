@@ -7,33 +7,30 @@ import xCircleIcon from '../../../assets/images/icons/x-circle.svg';
 import checkCircleIcon from '../../../assets/images/icons/check-circle.svg';
 
 export default function ToastMessage({ message, onRemoveMessage }) {
-  const { id, text, type, duration = 7000 } = message;
-
   useEffect(() => {
-    setTimeout(() => {
-      console.log('set timeou exec');
-      onRemoveMessage(id);
-    }, duration);
+    const timeoutId = setTimeout(() => {
+      onRemoveMessage(message.id);
+    }, message.duration || 7000);
 
     return () => {
-      console.log('Desmonotou', id);
+      clearTimeout(timeoutId);
     };
-  }, [id, duration, onRemoveMessage]);
+  }, [message, onRemoveMessage]);
 
   function handleRemoveToast() {
-    onRemoveMessage(id);
+    onRemoveMessage(message.id);
   }
 
   return (
     <Container
-      variant={type}
+      variant={message.type}
       onClick={handleRemoveToast}
       tabIndex={0}
       role='button'
     >
-      {type === 'danger' && <img src={xCircleIcon} alt='X' />}
-      {type === 'success' && <img src={checkCircleIcon} alt='Check' />}
-      <strong>{text}</strong>
+      {message.type === 'danger' && <img src={xCircleIcon} alt='X' />}
+      {message.type === 'success' && <img src={checkCircleIcon} alt='Check' />}
+      <strong>{message.text}</strong>
     </Container>
   );
 }
