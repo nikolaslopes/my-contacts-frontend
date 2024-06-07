@@ -16,5 +16,9 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+
+    &[disabled] {
+      cursor: default;
+    }
   }
 `;
