@@ -93,6 +93,9 @@ export default function Home() {
         text: 'Contato deletado com sucesso!',
       });
       handleCloseDeleteModal();
+      setContacts((prevState) =>
+        prevState.filter((contact) => contact.id !== contactBeingDeleted.id),
+      );
     } catch {
       toast({
         type: 'danger',
