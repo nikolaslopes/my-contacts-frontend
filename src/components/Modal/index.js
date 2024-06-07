@@ -28,7 +28,12 @@ export default function Modal({
         <div className='modal-body'>{children}</div>
 
         <Footer>
-          <button type='button' className='cancel-button' onClick={onCancel}>
+          <button
+            type='button'
+            className='cancel-button'
+            onClick={onCancel}
+            disabled={isLoading}
+          >
             {cancelLabel}
           </button>
           <Button
