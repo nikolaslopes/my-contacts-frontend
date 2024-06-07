@@ -21,10 +21,14 @@ export const Container = styled.div`
   padding: 24px;
   border-radius: 4px;
 
-  h1 {
+  > h1 {
     font-size: 22px;
     color: ${({ theme, danger }) =>
       danger ? theme.colors.danger.main : theme.colors.gray[900]}
+  }
+
+  .modal-body {
+    margin-top: 32px;
   }
 `;
 
