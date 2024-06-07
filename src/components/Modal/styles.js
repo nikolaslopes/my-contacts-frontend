@@ -26,10 +26,6 @@ export const Container = styled.div`
     color: ${({ theme, danger }) =>
       danger ? theme.colors.danger.main : theme.colors.gray[900]}
   }
-
-  p {
-    margin-top: 8px;
-  }
 `;
 
 export const Footer = styled.footer`
