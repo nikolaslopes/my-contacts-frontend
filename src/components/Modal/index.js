@@ -20,6 +20,14 @@ export default function Modal({
     return null;
   }
 
+  let container = document.getElementById('modal-root');
+
+  if (!container) {
+    container = document.createElement('div');
+    container.setAttribute('id', 'modal-root');
+    document.body.appendChild(container);
+  }
+
   return ReactDom.createPortal(
     <Overlay>
       <Container danger={danger}>
