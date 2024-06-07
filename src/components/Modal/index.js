@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import ReactDom from 'react-dom';
 
+import ReactPortal from '../ReactPortal';
 import Button from '../../components/Button';
 
 import { Overlay, Container, Footer } from './styles';
@@ -20,42 +20,35 @@ export default function Modal({
     return null;
   }
 
-  let container = document.getElementById('modal-root');
+  return (
+    <ReactPortal containerId='modal-root'>
+      <Overlay>
+        <Container danger={danger}>
+          <h1>{title}</h1>
 
-  if (!container) {
-    container = document.createElement('div');
-    container.setAttribute('id', 'modal-root');
-    document.body.appendChild(container);
-  }
+          <div className='modal-body'>{children}</div>
 
-  return ReactDom.createPortal(
-    <Overlay>
-      <Container danger={danger}>
-        <h1>{title}</h1>
-
-        <div className='modal-body'>{children}</div>
-
-        <Footer>
-          <button
-            type='button'
-            className='cancel-button'
-            onClick={onCancel}
-            disabled={isLoading}
-          >
-            {cancelLabel}
-          </button>
-          <Button
-            type='button'
-            danger={danger}
-            onClick={onConfirm}
-            isLoading={isLoading}
-          >
-            {confirmLabel}
-          </Button>
-        </Footer>
-      </Container>
-    </Overlay>,
-    document.getElementById('modal-root'),
+          <Footer>
+            <button
+              type='button'
+              className='cancel-button'
+              onClick={onCancel}
+              disabled={isLoading}
+            >
+              {cancelLabel}
+            </button>
+            <Button
+              type='button'
+              danger={danger}
+              onClick={onConfirm}
+              isLoading={isLoading}
+            >
+              {confirmLabel}
+            </Button>
+          </Footer>
+        </Container>
+      </Overlay>
+    </ReactPortal>
   );
 }
 
