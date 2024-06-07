@@ -5,20 +5,33 @@ import Button from '../../components/Button';
 
 import { Overlay, Container, Footer } from './styles';
 
-export default function Modal({ danger }) {
+export default function Modal({
+  visible,
+  danger = false,
+  title,
+  children,
+  cancelLabel = 'Cancelar',
+  confirmLabel = 'Confirmar',
+  onCancel,
+  onConfirm,
+}) {
+  if (!visible) {
+    return null;
+  }
+
   return ReactDom.createPortal(
     <Overlay>
       <Container danger={danger}>
-        <h1>Tem certeza que deseja remover o contato "Nikolas Lopes"?</h1>
+        <h1>{title}</h1>
 
-        <p>Esta ação não poderá ser desfeita!</p>
+        <div className='modal-body'>{children}</div>
 
         <Footer>
-          <button type='button' className='cancel-button'>
-            Cancelar
+          <button type='button' className='cancel-button' onClick={onCancel}>
+            {cancelLabel}
           </button>
-          <Button type='button' danger={danger}>
-            Deletar
+          <Button type='button' danger={danger} onClick={onConfirm}>
+            {confirmLabel}
           </Button>
         </Footer>
       </Container>
@@ -28,9 +41,12 @@ export default function Modal({ danger }) {
 }
 
 Modal.propTypes = {
+  visible: PropTypes.bool.isRequired,
   danger: PropTypes.bool,
-};
-
-Modal.defaultProps = {
-  danger: false,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  cancelLabel: PropTypes.string,
+  confirmLabel: PropTypes.string,
+  onCancel: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };
