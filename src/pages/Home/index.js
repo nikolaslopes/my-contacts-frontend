@@ -4,16 +4,15 @@ import { useHome } from './useHome';
 
 import Modal from '../../components/Modal';
 import Loader from '../../components/Loader';
-import Button from '../../components/Button';
 
 import InputSearch from './components/InputSearch';
 import Header from './components/Header';
+import ErrorStatus from './components/ErrorStatus';
 
 import {
   Container,
   ListHeader,
   Card,
-  ErrorContainer,
   SearchNotFoundContainer,
   EmptyListContainer,
 } from './styles';
@@ -21,7 +20,6 @@ import {
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
-import sadFace from '../../assets/images/sad-face.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
 import magnfierQuestion from '../../assets/images/magnifier-question.svg';
 
@@ -58,17 +56,7 @@ export default function Home() {
         quantityOfFilteredContacts={filteredContacts.length}
       />
 
-      {hasError && (
-        <ErrorContainer>
-          <img src={sadFace} alt='Sad Face' />
-          <div className='error-details'>
-            <strong>Ocorreu um erro ao obter os seus contatos!</strong>
-            <Button type='button' onClick={handleTryAgain}>
-              Tentar novamente
-            </Button>
-          </div>
-        </ErrorContainer>
-      )}
+      {hasError && <ErrorStatus onTryAgain={handleTryAgain} />}
 
       {!hasError && (
         <>
