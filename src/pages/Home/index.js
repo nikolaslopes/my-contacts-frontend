@@ -9,13 +9,13 @@ import InputSearch from './components/InputSearch';
 import Header from './components/Header';
 import ErrorStatus from './components/ErrorStatus';
 import EmptyList from './components/EmptyList';
+import SearchNotFound from './components/SearchNotFound';
 
-import { Container, ListHeader, Card, SearchNotFoundContainer } from './styles';
+import { Container, ListHeader, Card } from './styles';
 
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
-import magnfierQuestion from '../../assets/images/magnifier-question.svg';
 
 export default function Home() {
   const {
@@ -56,6 +56,10 @@ export default function Home() {
         <>
           {contacts.length < 1 && !isLoading && <EmptyList />}
 
+          {contacts.length > 0 && filteredContacts.length < 1 && (
+            <SearchNotFound searchTerm={searchTerm} />
+          )}
+
           {filteredContacts.length > 0 && (
             <ListHeader $orderBy={orderBy}>
               <button type='button' onClick={handleToggleOrderBy}>
@@ -63,16 +67,6 @@ export default function Home() {
                 <img src={arrow} alt='Arrow' />
               </button>
             </ListHeader>
-          )}
-
-          {contacts.length > 0 && filteredContacts.length < 1 && (
-            <SearchNotFoundContainer>
-              <img src={magnfierQuestion} alt='Magnifier question' />
-              <span>
-                Nenhum resultado foi encontrado para{' '}
-                <strong>{searchTerm}</strong>.
-              </span>
-            </SearchNotFoundContainer>
           )}
 
           {filteredContacts.map((contact) => (
