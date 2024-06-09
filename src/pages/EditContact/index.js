@@ -26,9 +26,9 @@ export default function EditContact() {
         const contactData = await ContactsService.getContactById(id);
 
         safeAsyncAction(() => {
+          contactFormRef.current.setFieldsValues(contactData);
           setIsLoading(false);
           setContactName(contactData.name);
-          contactFormRef.current.setFieldsValues(contactData);
         });
       } catch {
         safeAsyncAction(() => {
