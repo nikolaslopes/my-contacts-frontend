@@ -134,7 +134,7 @@ export default function Home() {
       )}
 
       <Header
-        justifyContent={
+        justifycontent={
           hasError
             ? 'flex-end'
             : contacts.length > 0
@@ -178,7 +178,7 @@ export default function Home() {
           )}
 
           {filteredContacts.length > 0 && (
-            <ListHeader orderBy={orderBy}>
+            <ListHeader orderby={orderBy}>
               <button type='button' onClick={handleToggleOrderBy}>
                 <span>Nome</span>
                 <img src={arrow} alt='Arrow' />
