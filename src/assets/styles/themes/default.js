@@ -3,6 +3,7 @@ export default {
     background: '#F6F5FC',
     gray: {
       900: '#222222',
+      300: '#8C8C8C',
       200: '#BCBCBC',
       100: '#E5E5E5',
     },
