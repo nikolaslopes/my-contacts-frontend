@@ -8,6 +8,7 @@ import Loader from '../../components/Loader';
 import InputSearch from './components/InputSearch';
 import Header from './components/Header';
 import ErrorStatus from './components/ErrorStatus';
+import EmptyList from './components/EmptyList';
 
 import { Container, ListHeader, Card, SearchNotFoundContainer } from './styles';
 
@@ -15,7 +16,6 @@ import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 import magnfierQuestion from '../../assets/images/magnifier-question.svg';
-import EmptyList from './components/EmptyList';
 
 export default function Home() {
   const {
