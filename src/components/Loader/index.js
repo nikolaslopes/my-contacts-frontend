@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 
 import { Overlay } from './styles';
 
-export default function Loader({ isLoading }) {
+export default function Loader({ isLoading = false }) {
   if (!isLoading) {
     return null;
   }
@@ -20,5 +20,5 @@ export default function Loader({ isLoading }) {
 }
 
 Loader.propTypes = {
-  isLoadind: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
