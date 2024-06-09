@@ -9,19 +9,13 @@ import InputSearch from './components/InputSearch';
 import Header from './components/Header';
 import ErrorStatus from './components/ErrorStatus';
 
-import {
-  Container,
-  ListHeader,
-  Card,
-  SearchNotFoundContainer,
-  EmptyListContainer,
-} from './styles';
+import { Container, ListHeader, Card, SearchNotFoundContainer } from './styles';
 
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
-import emptyBox from '../../assets/images/empty-box.svg';
 import magnfierQuestion from '../../assets/images/magnifier-question.svg';
+import EmptyList from './components/EmptyList';
 
 export default function Home() {
   const {
@@ -60,17 +54,7 @@ export default function Home() {
 
       {!hasError && (
         <>
-          {contacts.length < 1 && !isLoading && (
-            <EmptyListContainer>
-              <img src={emptyBox} alt='Empty box' />
-
-              <p>
-                Você ainda não tem nenhum contato cadastrado! Clique no botão{' '}
-                <strong>”Novo contato”</strong> à cima para cadastrar o seu
-                primeiro!
-              </p>
-            </EmptyListContainer>
-          )}
+          {contacts.length < 1 && !isLoading && <EmptyList />}
 
           {filteredContacts.length > 0 && (
             <ListHeader $orderBy={orderBy}>
