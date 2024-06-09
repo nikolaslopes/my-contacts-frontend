@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import ContactsService from '../../services/ContactsService';
+import useIsMounted from '../../hooks/useIsMounted';
 import toast from '../../utils/toast';
 
 import PageHeader from '../../components/PageHeader';
@@ -17,26 +18,31 @@ export default function EditContact() {
 
   const contactFormRef = useRef(null);
 
+  const isMounted = useIsMounted();
+
   useEffect(() => {
     async function loadContacts() {
       try {
         const contactData = await ContactsService.getContactById(id);
 
-        contactFormRef.current.setFieldsValues(contactData);
-
-        setIsLoading(false);
-        setContactName(contactData.name);
+        if (isMounted()) {
+          setIsLoading(false);
+          setContactName(contactData.name);
+          contactFormRef.current.setFieldsValues(contactData);
+        }
       } catch {
-        navigate('/', { replace: true });
-        toast({
-          type: 'danger',
-          text: 'Contato não encontrado!',
-        });
+        if (isMounted()) {
+          navigate('/', { replace: true });
+          toast({
+            type: 'danger',
+            text: 'Contato não encontrado!',
+          });
+        }
       }
     }
 
     loadContacts();
-  }, [id, navigate]);
+  }, [id, isMounted, navigate]);
 
   async function handleSubmit(formData) {
     try {
