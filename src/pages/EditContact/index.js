@@ -10,13 +10,13 @@ import ContactForm from '../../components/ContactForm';
 import Loader from '../../components/Loader';
 
 export default function EditContact() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState(true);
   const [contactName, setContactName] = useState('');
 
   const contactFormRef = useRef(null);
+
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const isMounted = useIsMounted();
 
