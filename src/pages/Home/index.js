@@ -6,9 +6,10 @@ import Modal from '../../components/Modal';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 
+import InputSearch from './components/InputSearch';
+
 import {
   Container,
-  InputSearchContainer,
   Header,
   ListHeader,
   Card,
@@ -47,27 +48,8 @@ export default function Home() {
     <Container>
       <Loader isLoading={isLoading} />
 
-      <Modal
-        danger
-        visible={isDeleteModalVisible}
-        isLoading={isLoadingDelete}
-        title={`Tem certeza que deseja remover o contato "${contactBeingDeleted?.name}"?`}
-        confirmLabel='Deletar'
-        onCancel={handleCloseDeleteModal}
-        onConfirm={handleConfirmDeleteContact}
-      >
-        <p>Esta ação não poderá ser desfeita!</p>
-      </Modal>
-
       {!hasError && contacts.length > 0 && (
-        <InputSearchContainer>
-          <input
-            type='text'
-            placeholder='Pesquisar contato'
-            value={searchTerm}
-            onChange={handleChangeSearchTerm}
-          />
-        </InputSearchContainer>
+        <InputSearch value={searchTerm} onChange={handleChangeSearchTerm} />
       )}
 
       <Header
@@ -159,6 +141,18 @@ export default function Home() {
               </div>
             </Card>
           ))}
+
+          <Modal
+            danger
+            visible={isDeleteModalVisible}
+            isLoading={isLoadingDelete}
+            title={`Tem certeza que deseja remover o contato "${contactBeingDeleted?.name}"?`}
+            confirmLabel='Deletar'
+            onCancel={handleCloseDeleteModal}
+            onConfirm={handleConfirmDeleteContact}
+          >
+            <p>Esta ação não poderá ser desfeita!</p>
+          </Modal>
         </>
       )}
     </Container>
