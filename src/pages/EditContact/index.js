@@ -21,7 +21,7 @@ export default function EditContact() {
   const safeAsyncAction = useSafeAsyncStateAction();
 
   useEffect(() => {
-    async function loadContacts() {
+    async function loadContact() {
       try {
         const contactData = await ContactsService.getContactById(id);
 
@@ -41,7 +41,7 @@ export default function EditContact() {
       }
     }
 
-    loadContacts();
+    loadContact();
   }, [id, safeAsyncAction, navigate]);
 
   async function handleSubmit(contact) {
