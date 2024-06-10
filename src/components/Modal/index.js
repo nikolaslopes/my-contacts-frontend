@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+
 import PropTypes from 'prop-types';
 
 import ReactPortal from '../ReactPortal';
@@ -16,13 +18,42 @@ export default function Modal({
   onCancel,
   onConfirm,
 }) {
-  if (!visible) {
+  const [shouldRender, setShouldRender] = useState(visible);
+
+  const overlayRef = useRef(null);
+
+  useEffect(() => {
+    const overlayRefElement = overlayRef.current;
+
+    if (visible) {
+      setShouldRender(true);
+    }
+
+    function handleAnimationEnd() {
+      setShouldRender(false);
+    }
+
+    if (!visible && overlayRefElement) {
+      overlayRefElement.addEventListener('animationend', handleAnimationEnd);
+    }
+
+    return () => {
+      if (overlayRefElement) {
+        overlayRefElement.removeEventListener(
+          'animationend',
+          handleAnimationEnd,
+        );
+      }
+    };
+  }, [visible]);
+
+  if (!shouldRender) {
     return null;
   }
 
   return (
     <ReactPortal containerId='modal-root'>
-      <Overlay>
+      <Overlay $isLeaving={!visible} ref={overlayRef}>
         <Container danger={danger}>
           <h1>{title}</h1>
 
