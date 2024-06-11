@@ -27,8 +27,8 @@ export const StyledButton = styled.button`
     background: #ccc !important;
   }
 
-  ${({ theme, danger }) =>
-    danger &&
+  ${({ theme, $danger }) =>
+    $danger &&
     css`
     background: ${theme.colors.danger.main};
 

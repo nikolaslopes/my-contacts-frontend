@@ -15,7 +15,7 @@ export default function Button({
   return (
     <StyledButton
       type={type}
-      danger={danger}
+      $danger={danger}
       disabled={disabled || isLoading}
       onClick={onClick}
     >
