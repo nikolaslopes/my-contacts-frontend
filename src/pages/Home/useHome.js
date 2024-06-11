@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 
 import ContactsService from '../../services/ContactsService';
 import toast from '../../utils/toast';
+import useIsMounted from '../../hooks/useIsMounted';
 
 export function useHome() {
   const [contacts, setContacts] = useState([]);
@@ -12,6 +13,9 @@ export function useHome() {
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [contactBeingDeleted, setContactBeingDeleted] = useState(null);
   const [isLoadingDelete, setIsLoadingDelete] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+
+  const isMounted = useIsMounted();
 
   const filteredContacts = useMemo(() => {
     return contacts.filter((contact) =>
@@ -38,6 +42,12 @@ export function useHome() {
   useEffect(() => {
     loadContacts();
   }, [loadContacts]);
+
+  useEffect(() => {
+    if (!isLoading && isMounted()) {
+      setIsHeaderVisible(true);
+    }
+  }, [isLoading, isMounted]);
 
   function handleChangeSearchTerm(event) {
     setSearchTerm(event.target.value);
@@ -85,6 +95,7 @@ export function useHome() {
 
   return {
     isLoading,
+    isHeaderVisible,
     isLoadingDelete,
     isDeleteModalVisible,
     contactBeingDeleted,

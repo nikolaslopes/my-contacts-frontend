@@ -14,6 +14,7 @@ import { Container } from './styles';
 export default function Home() {
   const {
     isLoading,
+    isHeaderVisible,
     isLoadingDelete,
     isDeleteModalVisible,
     contactBeingDeleted,
@@ -43,11 +44,13 @@ export default function Home() {
         <InputSearch value={searchTerm} onChange={handleChangeSearchTerm} />
       )}
 
-      <Header
-        hasError={hasError}
-        quantityOfContacts={contacts.length}
-        quantityOfFilteredContacts={filteredContacts.length}
-      />
+      {isHeaderVisible && (
+        <Header
+          hasError={hasError}
+          quantityOfContacts={contacts.length}
+          quantityOfFilteredContacts={filteredContacts.length}
+        />
+      )}
 
       {hasError && <ErrorStatus onTryAgain={handleTryAgain} />}
       {isListEmpty && <EmptyList />}
