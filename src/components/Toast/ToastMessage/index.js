@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from './styles';
@@ -10,26 +10,8 @@ export default function ToastMessage({
   message,
   onRemoveMessage,
   isLeaving,
-  onAnimationEnd,
+  animatedRef,
 }) {
-  const animatedElementRef = useRef(null);
-
-  useEffect(() => {
-    const elementRef = animatedElementRef.current;
-
-    function handleAnimationEnd() {
-      onAnimationEnd(message.id);
-    }
-
-    if (isLeaving) {
-      elementRef.addEventListener('animationend', handleAnimationEnd);
-    }
-
-    return () => {
-      elementRef.removeEventListener('animationend', handleAnimationEnd);
-    };
-  }, [onAnimationEnd, message.id, isLeaving]);
-
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onRemoveMessage(message.id);
@@ -51,7 +33,7 @@ export default function ToastMessage({
       tabIndex={0}
       role='button'
       $isLeaving={isLeaving}
-      ref={animatedElementRef}
+      ref={animatedRef}
     >
       {message.type === 'danger' && <img src={xCircleIcon} alt='X' />}
       {message.type === 'success' && <img src={checkCircleIcon} alt='Check' />}
@@ -69,5 +51,5 @@ ToastMessage.propTypes = {
   }).isRequired,
   onRemoveMessage: PropTypes.func.isRequired,
   isLeaving: PropTypes.bool.isRequired,
-  onAnimationEnd: PropTypes.func.isRequired,
+  animatedRef: PropTypes.shape().isRequired,
 };
