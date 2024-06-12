@@ -55,7 +55,9 @@ The MyContacts is a web application to manage contacts built in React & JavaScri
 
 ## Preview
 
-![Preview]('.github/preview.gif')
+<div align="center">
+  <img src=".github/preview.gif" alt="Preview" />
+</div>
 
 ## Author
 
