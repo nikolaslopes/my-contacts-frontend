@@ -6,9 +6,11 @@ The MyContacts is a web application to manage contacts built in React & JavaScri
 
 ## Stacks
 
-<a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=js,styledcomponents,react,npm&theme=dark" />
-</a>
+![Static Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Static Badge](https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=JavaScript&logoColor=**white**)
+![Static Badge](https://img.shields.io/badge/React_Router-20232A?style=for-the-badge&logo=react-router&logoColor=red)
+![Static Badge](https://img.shields.io/badge/styled--components-20232A?style=for-the-badge&logo=styled-components&logoColor=pink)
+![Static Badge](https://img.shields.io/badge/Framer-20232A?style=for-the-badge&logo=framer&logoColor=blue)
 
 ## Features
 
@@ -33,7 +35,7 @@ The MyContacts is a web application to manage contacts built in React & JavaScri
 
 2. This application uses `.nvmrc` to manage the Node.js version, so use the correct Node.js version:
 
-   ```sh
+   ```**sh**
    nvm use
    ```
 
@@ -53,10 +55,6 @@ The MyContacts is a web application to manage contacts built in React & JavaScri
 
 ## Author
 
-<a href="https://github.com/nikolaslopes">
-  <img alt="Static Badge" src="https://img.shields.io/badge/linkedin-%2371B7FB?style=for-the-badge&logo=linkedin&color=blue">
-</a>
+[![Static Badge](https://img.shields.io/badge/nikolas%20lopes-%23F6F5FC?style=for-the-badge&logo=linkedin&label=linkedin&labelColor=2371B7)](https://www.linkedin.com/in/nikolaslopes/)
 
-<a href="https://github.com/nikolaslopes">
-  <img alt="Static Badge" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-</a>
+[![Static Badge](https://img.shields.io/badge/nikolaslopes-F6F5FC?style=for-the-badge&logo=github&label=github&labelColor=%23222)](https://github.com/nikolaslopes)
