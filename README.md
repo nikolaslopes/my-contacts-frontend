@@ -53,6 +53,10 @@ The MyContacts is a web application to manage contacts built in React & JavaScri
    npm start
    ```
 
+## Preview
+
+![Preview]('.github/preview.gif')
+
 ## Author
 
 [![Static Badge](https://img.shields.io/badge/nikolas%20lopes-c1c1c1?style=for-the-badge&logo=linkedin&label=linkedin&labelColor=2371B7)](https://www.linkedin.com/in/nikolaslopes/)
