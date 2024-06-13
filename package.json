@@ -3,17 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "framer-motion": "^11.2.10",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.1.11",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^6.1.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,7 +20,8 @@
     "format:fix": "biome format --write ./src",
     "lint:check": "biome lint ./src",
     "lint:fix": "biome lint --apply ./src",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deps:check": "npx npm-check-updates && npm outdated"
   },
   "eslintConfig": {
     "extends": ["react-app", "react-app/jest"]
@@ -38,10 +35,10 @@
     ]
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.3",
+    "@biomejs/biome": "1.8.1",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2"
+    "lint-staged": "^15.2.7"
   }
 }
