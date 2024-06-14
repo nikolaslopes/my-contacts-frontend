@@ -1,4 +1,10 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useDeferredValue,
+} from 'react';
 
 import ContactsService from '../../services/ContactsService';
 import toast from '../../utils/toast';
@@ -7,7 +13,6 @@ import useIsMounted from '../../hooks/useIsMounted';
 export function useHome() {
   const [contacts, setContacts] = useState([]);
   const [orderBy, setOrderBy] = useState('asc');
-  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
@@ -15,13 +20,16 @@ export function useHome() {
   const [isLoadingDelete, setIsLoadingDelete] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const deferredSearchTerm = useDeferredValue(searchTerm);
+
   const isMounted = useIsMounted();
 
   const filteredContacts = useMemo(() => {
     return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      contact.name.toLowerCase().includes(deferredSearchTerm.toLowerCase()),
     );
-  }, [contacts, searchTerm]);
+  }, [contacts, deferredSearchTerm]);
 
   const loadContacts = useCallback(async () => {
     try {
