@@ -7,10 +7,10 @@ import { StyledButton } from './styles';
 export default function Button({
   type = 'button',
   danger = false,
-  disabled = false,
-  isLoading = false,
   children,
-  onClick = undefined,
+  isLoading = false,
+  disabled = false,
+  onClick,
 }) {
   return (
     <StyledButton
@@ -28,8 +28,8 @@ export default function Button({
 Button.propTypes = {
   type: PropTypes.string,
   danger: PropTypes.bool,
-  disabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  isLoading: PropTypes.bool,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };

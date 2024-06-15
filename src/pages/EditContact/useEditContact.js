@@ -21,10 +21,10 @@ export default function useEditContact() {
 
     async function loadContact() {
       try {
-        const contactData = await ContactsService.getContactById(
+        const contactData = await ContactsService.getContactById({
           id,
-          controller.signal,
-        );
+          signal: controller.signal,
+        });
 
         safeAsyncAction(() => {
           contactFormRef.current.setFieldsValues(contactData);

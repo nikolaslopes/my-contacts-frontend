@@ -8,15 +8,15 @@ import Button from '../../components/Button';
 import { Overlay, Container, Footer } from './styles';
 
 export default function Modal({
-  danger = false,
   visible,
-  isLoading = false,
   title,
   children,
-  cancelLabel = 'Cancelar',
-  confirmLabel = 'Confirmar',
   onCancel,
   onConfirm,
+  danger = false,
+  isLoading = false,
+  cancelLabel = 'Cancelar',
+  confirmLabel = 'Confirmar',
 }) {
   const { shouldRender, animatedElementRef } = useAnimatedUnmount(visible);
 
@@ -57,13 +57,13 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  danger: PropTypes.bool,
   visible: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  cancelLabel: PropTypes.string,
-  confirmLabel: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
+  danger: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  cancelLabel: PropTypes.string,
+  confirmLabel: PropTypes.string,
 };

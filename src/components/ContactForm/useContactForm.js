@@ -45,9 +45,9 @@ export function useContactForm({ onSubmit, ref }) {
 
     async function loadCategories() {
       try {
-        const categoriesList = await CategoriesService.listCategories(
-          controller.signal,
-        );
+        const categoriesList = await CategoriesService.listCategories({
+          signal: controller.signal,
+        });
 
         setCategories(categoriesList);
       } catch {

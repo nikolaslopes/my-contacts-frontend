@@ -36,10 +36,10 @@ export function useHome() {
       try {
         setIsLoading(true);
 
-        const contactsList = await ContactsService.listContacts(
-          orderBy,
+        const contactsList = await ContactsService.listContacts({
           signal,
-        );
+          orderBy,
+        });
 
         setHasError(false);
         setContacts(contactsList);
@@ -96,7 +96,7 @@ export function useHome() {
   async function handleConfirmDeleteContact() {
     try {
       setIsLoadingDelete(true);
-      await ContactsService.deleteContact(contactBeingDeleted.id);
+      await ContactsService.deleteContact({ id: contactBeingDeleted.id });
 
       toast({
         type: 'success',

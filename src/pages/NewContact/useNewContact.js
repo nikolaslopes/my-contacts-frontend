@@ -8,7 +8,7 @@ export function useNewContact() {
 
   async function handleSubmit(contact) {
     try {
-      await ContactsService.createContact(contact);
+      await ContactsService.createContact({ contact });
 
       contactFormRef.current.resetFields();
 
