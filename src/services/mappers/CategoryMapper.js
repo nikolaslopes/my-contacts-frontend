@@ -7,4 +7,5 @@ class CategoryMapper {
   }
 }
 
-export default new CategoryMapper();
+const CategoryMapperInstance = new CategoryMapper();
+export default CategoryMapperInstance;

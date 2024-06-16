@@ -55,7 +55,7 @@ export default function useEditContact() {
 
   async function handleSubmit(contact) {
     try {
-      const contactData = await ContactsService.updateContact(id, contact);
+      const contactData = await ContactsService.updateContact({ id, contact });
 
       setContactName(contactData.name);
       toast({

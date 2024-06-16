@@ -22,5 +22,5 @@ class ContactMapper {
     };
   }
 }
-
-export default new ContactMapper();
+const ContactMapperInstance = new ContactMapper();
+export default ContactMapperInstance;

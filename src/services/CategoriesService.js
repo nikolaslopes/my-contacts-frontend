@@ -14,4 +14,5 @@ class CategoriesService {
   }
 }
 
-export default new CategoriesService();
+const CategoriesServiceInstance = new CategoriesService();
+export default CategoriesServiceInstance;
