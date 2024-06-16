@@ -18,7 +18,7 @@ export default function useAnimatedList(initialValue = []) {
     setPendingRemovalItemsIds((prevState) =>
       prevState.filter((id) => itemId !== id),
     );
-  });
+  }, []);
 
   useEffect(() => {
     pendingRemovalItemsIds.forEach((itemId) => {
