@@ -10,7 +10,6 @@ The MyContacts is a web application to manage contacts built in React & JavaScri
 ![Static Badge](https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=JavaScript&logoColor=**white**)
 ![Static Badge](https://img.shields.io/badge/React_Router-20232A?style=for-the-badge&logo=react-router&logoColor=red)
 ![Static Badge](https://img.shields.io/badge/styled--components-20232A?style=for-the-badge&logo=styled-components&logoColor=pink)
-![Static Badge](https://img.shields.io/badge/Framer-20232A?style=for-the-badge&logo=framer&logoColor=blue)
 
 ## Features
 
